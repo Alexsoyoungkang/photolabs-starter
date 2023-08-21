@@ -10,7 +10,7 @@ const PhotoListItem = (props) => { // Props allow data to be passed in from a pa
       <div className="photo-list__user-details">
         <img className="photo-list__user-profile" alt="Profile image" src={props.profile} />
         <div className="photo-list__user-info">
-          {props.username} <br/>
+          {props.name} <br/>
           <div className="photo-list__user-location"> {props.city}, {props.country}  </div>
         </div>
       </div>

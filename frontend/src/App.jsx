@@ -1,6 +1,7 @@
 import React from 'react';
 
 import PhotoListItem from './components/PhotoListItem';
+import PhotoList from 'components/PhotoList';
 import './App.scss';
 
 // Note: Rendering a single component to build components in isolation
@@ -18,7 +19,7 @@ const sampleDataForPhotoListItem = {
 const App = () => {
   return (
     <div className="App">
-      <PhotoListItem
+      <PhotoList // child component
         key={sampleDataForPhotoListItem.id}
         imageSource={sampleDataForPhotoListItem.imageSource}
         profile={sampleDataForPhotoListItem.profile}
