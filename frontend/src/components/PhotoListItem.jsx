@@ -17,5 +17,6 @@ const PhotoListItem = (props) => { // Props allow data to be passed in from a pa
     </div>
   );
 };
+  
 
 export default PhotoListItem;
