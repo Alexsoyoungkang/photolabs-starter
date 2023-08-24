@@ -12,6 +12,7 @@ const PhotoList = (props) => { // props = <PhotoList photos = {photos} />
         return (
           <PhotoListItem  // renders PhotoListItem component with the pased-in data
             key={item.id}
+            photoId={item.id}
             imageSource={item.urls.regular}
             imageSourceFull={item.urls.full}
             profile={item.user.profile}
@@ -19,6 +20,8 @@ const PhotoList = (props) => { // props = <PhotoList photos = {photos} />
             username={item.user.username}
             city={item.location.city}
             country={item.location.country}
+            toggleFav={props.toggleFav}
+            favouritedPhotos={props.favouritedPhotos}
           />
         );
       })}
