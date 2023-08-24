@@ -8,7 +8,7 @@ const PhotoListItem = (props) => { // Props allow data to be passed in from a pa
   return (
     <div className="photo-list__item">
       <PhotoFavButton toggleFav={props.toggleFav} selected={props.favouritedPhotos.includes(props.photoId)} photoId={props.photoId} />
-      <img className="photo-list__image" alt="Item image" src={props.imageSource} />
+      <img className="photo-list__image" alt="Item image" src={props.imageSource} onClick={props.openModal} />
       <div className="photo-list__user-details">
         <img className="photo-list__user-profile" alt="Profile image" src={props.profile} />
         <div className="photo-list__user-info">

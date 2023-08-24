@@ -22,6 +22,7 @@ const PhotoList = (props) => { // props = <PhotoList photos = {photos} />
             country={item.location.country}
             toggleFav={props.toggleFav}
             favouritedPhotos={props.favouritedPhotos}
+            openModal={props.openModal}
           />
         );
       })}

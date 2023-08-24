@@ -1,15 +1,35 @@
-import React from 'react';
+import React, { useState } from 'react';
 
 import HomeRoute from 'routes/HomeRoute';
+import PhotoDetailsModal from 'routes/PhotoDetailsModal';
 import './App.scss';
 
 // Note: Rendering a single component to build components in isolation
 
 
 const App = () => {
-  return ( // <PhotoList/> that will render multiple <PhotoListItem/> and PhotoList component is passing in the sample data directly into the PhotoListItem components
+  // const [clickedPhoto, setClickedPhoto] = useState(null);
+  const [isModalOpen, setIsModalOpen] = useState(false);
+
+  const openModal = () => {
+    // setClickedPhoto(photo);
+    setIsModalOpen(true);
+  };
+
+  // const closeModal = () => {
+  //   // setClickedPhoto(null);
+  //   setIsModalOpen(false);
+  // };
+
+  return (
     <div className="App">
-      <HomeRoute />
+      <HomeRoute openModal={openModal} />
+      {isModalOpen && (
+        <PhotoDetailsModal
+          // clickedPhoto={clickedPhoto}
+          // closeModal={closeModal}
+        />
+      )}
     </div>
   );
 };
