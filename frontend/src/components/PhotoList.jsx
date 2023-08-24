@@ -23,6 +23,7 @@ const PhotoList = (props) => { // props = <PhotoList photos = {photos} />
             toggleFav={props.toggleFav}
             favouritedPhotos={props.favouritedPhotos}
             openModal={props.openModal}
+            photo={item}
           />
         );
       })}

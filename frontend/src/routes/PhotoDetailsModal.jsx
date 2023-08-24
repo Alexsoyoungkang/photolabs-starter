@@ -9,7 +9,7 @@ const PhotoDetailsModal = (props) => {
   const handleCloseClick = () => {
     closeModal();
   };
-  
+  console.log("clickedPhoto", props.clickedPhoto);
   return (
     <div className="photo-details-modal" >
       <button className="photo-details-modal__close-button" onClick={ handleCloseClick }>
