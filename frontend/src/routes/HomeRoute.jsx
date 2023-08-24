@@ -16,6 +16,10 @@ const HomeRoute = () => { // topics = {topics} = props
         ? favPhotos.filter((fave) => fave !== photoId) // returns an array without photoId
         : [...favPhotos, photoId] // if photoId: 4, from: [1, 2, 3] => [1, 2, 3, 4]
     );
+    // const newFavPhotos = favPhotos.includes(photoId)
+    //   ? favPhotos.filter((fave) => fave !== photoId)
+    //   : [...favPhotos, photoId];
+    // setFavPhotos(newFavPhotos);
 
     // if (favPhotos.includes(photoId)) {
     //   let newFavPhotoList = [...favPhotos]; // copying stateObject
@@ -33,7 +37,7 @@ const HomeRoute = () => { // topics = {topics} = props
   
   return (
     <div className="home-route">
-      <TopNavigationBar topics = {topics} />
+      <TopNavigationBar topics = {topics} favPhotoCount={favPhotos.length} />
       <PhotoList photos={photos} toggleFav={toggleFav} favouritedPhotos={favPhotos} />
     </div>
   );

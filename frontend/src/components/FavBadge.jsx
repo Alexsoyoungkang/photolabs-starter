@@ -3,12 +3,13 @@ import FavIcon from './FavIcon';
 
 import '../styles/FavBadge.scss';
 
-const FavBadge = ({ isFavPhotoExist }) => {
+const FavBadge = (props) => { // displayAlert prop based on the value of isFavPhotoExist. { favPhotoCount } = props
   return (
     <div className='fav-badge'>
-      <FavIcon displayAlert={!!isFavPhotoExist} selected={true}/>
+      <FavIcon displayAlert={props.favPhotoCount > 0} selected={true}/>
     </div>
   );
 };
+// If favPhotoCount is greater than 0, it sets the displayAlert prop to true.
 
 export default FavBadge;
