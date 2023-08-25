@@ -23,5 +23,6 @@ const PhotoFavButton = (props) => {
     </div>
   );
 };
+// <FavIcon selected={props.selected} /> = <FavIcon selected={props.favouritedPhotos.includes(props.photoId)} />
 
 export default PhotoFavButton;

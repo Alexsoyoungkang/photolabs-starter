@@ -23,7 +23,7 @@ const HomeRoute = (props) => { // topics = {topics} = props
 
   // };
   // console.log(favPhotos);
-  console.log("homerouteprops", props);
+  //console.log("homerouteprops", props);
   return (
     <div className="home-route">
       <TopNavigationBar topics = {topics} favPhotoCount={props.favouritedPhotos.length} />
@@ -31,5 +31,13 @@ const HomeRoute = (props) => { // topics = {topics} = props
     </div>
   );
 };
+  /*const props = {
+    openModal: openModal,
+    toggleFav: toggleFav,
+    favouritedPhotos: favPhotos
+  }*/
+  
+// favouritedPhotos={props.favouritedPhotos}
+// favouritedPhotos in {props.favouritedPhotos} is the variable favPhotos from the app.jsx
 
 export default HomeRoute;
