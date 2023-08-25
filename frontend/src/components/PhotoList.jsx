@@ -6,6 +6,7 @@ import "../styles/PhotoList.scss";
 
 
 const PhotoList = (props) => { // props = <PhotoList photos = {photos} />
+  console.log("PhotoListprops", props);
   return (
     <ul className="photo-list">
       {props.photos.map((item) => { // maps over the photos array from mock file received from the parent (homeroute).
@@ -30,6 +31,8 @@ const PhotoList = (props) => { // props = <PhotoList photos = {photos} />
     </ul>
   );
 };
-
+/* toggleFav={props.toggleFav}
+favouritedPhotos={props.favouritedPhotos}
+openModal={props.openModal}  - coming from HomeRoute which is coming from App.jsx */
 
 export default PhotoList;

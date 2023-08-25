@@ -10,6 +10,7 @@ import './App.scss';
 const App = () => {
   const [clickedPhoto, setClickedPhoto] = useState(null);
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const [favPhotos, setFavPhotos] = useState([]);
 
   const openModal = (photo) => {
     setClickedPhoto(photo);
@@ -21,13 +22,25 @@ const App = () => {
     setIsModalOpen(false);
   };
 
+  const toggleFav = (photoId) => { // photoId = photos user clicks
+    setFavPhotos(
+      favPhotos.includes(photoId)
+        ? favPhotos.filter((fave) => fave !== photoId) // returns an array without photoId
+        : [...favPhotos, photoId] // if photoId: 4, from: [1, 2, 3] => [1, 2, 3, 4]
+    );
+
+
+  };
+
   return (
     <div className="App">
-      <HomeRoute openModal={openModal} />
+      <HomeRoute openModal={openModal} toggleFav={toggleFav} favouritedPhotos={favPhotos} />
       {isModalOpen && (
         <PhotoDetailsModal
           clickedPhoto={clickedPhoto}
           closeModal={closeModal}
+          toggleFav={toggleFav}
+          favouritedPhotos={favPhotos}
         />
       )}
     </div>
