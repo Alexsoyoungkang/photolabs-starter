@@ -32,6 +32,7 @@ const App = () => {
 
   };
   console.log("favphotos", favPhotos);
+  console.log("ClickedPhotos", clickedPhoto);
   // openModal={openModal} key = value / before
   // favouritedPhotos={favPhotos} - favouritedPhotos is variable, {favPhotos} = value
 

@@ -31,7 +31,7 @@
 
 .photo-details-modal__image {
   max-width: 95%;
-  border-radius: 8px;
+  // border-radius: 8px;
 }
 
 .photo-details-modal__top-bar {
@@ -55,4 +55,31 @@
   margin-top: 24px;
   margin-bottom: 24px;
   width: 90%;
+}
+
+.photo-details-modal__user-details {
+  display: flex;
+  align-items: center;
+}
+
+.photo-details-modal__profile {
+  object-fit: cover;
+  border-radius: 100%;
+  vertical-align: middle;
+  margin-right: 8px;
+  width: 40px;
+  height: 40px;
+}
+
+.photo-details-modal__user-info {
+  margin-top: 5px;
+  margin-bottom: auto;
+  font-weight: 700;
+  font-size: 12px;
+  margin-left: 8px;
+}
+
+.photo-details-modal__user-location {
+  margin-top: auto;
+  color: #838383;
 }
