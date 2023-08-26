@@ -17,7 +17,6 @@ const PhotoDetailsModal = (props) => {
     return props.clickedPhoto.similar_photos[key];
   }); // returns an array of similar_photos of the clickedPhoto
   //console.log("arrayPhoto", arrayPhoto);
-
   return (
     <div className="photo-details-modal" >
       <button className="photo-details-modal__close-button" onClick={ handleCloseClick }>

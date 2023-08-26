@@ -24,6 +24,8 @@ const HomeRoute = (props) => { // topics = {topics} = props
   // };
   // console.log(favPhotos);
   //console.log("homerouteprops", props);
+  console.log("favphotos", props.favouritedPhotos);
+
   return (
     <div className="home-route">
       <TopNavigationBar topics = {topics} favPhotoCount={props.favouritedPhotos.length} />
