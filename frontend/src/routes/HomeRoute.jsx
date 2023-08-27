@@ -3,8 +3,8 @@ import React, { useState} from 'react';
 import '../styles/HomeRoute.scss';
 import TopNavigationBar from 'components/TopNavigationBar';
 import PhotoList from 'components/PhotoList';
-import topics from 'mocks/topics';
-import photos from 'mocks/photos';
+// import topics from 'mocks/topics';
+// import photos from 'mocks/photos';
 
 
 const HomeRoute = (props) => { // topics = {topics} = props
@@ -28,8 +28,8 @@ const HomeRoute = (props) => { // topics = {topics} = props
 
   return (
     <div className="home-route">
-      <TopNavigationBar topics = {topics} favPhotoCount={props.favouritedPhotos.length} />
-      <PhotoList photos={photos} toggleFav={props.toggleFav} favouritedPhotos={props.favouritedPhotos} openModal={props.openModal}/>
+      <TopNavigationBar topics ={props.topics} favPhotoCount={props.favouritedPhotos.length} />
+      <PhotoList photos={props.photos} toggleFav={props.toggleFav} favouritedPhotos={props.favouritedPhotos} openModal={props.openModal}/>
     </div>
   );
 };

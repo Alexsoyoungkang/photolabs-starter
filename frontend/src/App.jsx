@@ -10,6 +10,9 @@ import useApplicationData from 'hooks/useApplicationData';
 // Styling
 import './App.scss';
 
+// Mock data
+import topics from 'mocks/topics';
+import photos from 'mocks/photos';
 
 // Note: Rendering a single component to build components in isolation
 
@@ -53,11 +56,11 @@ const App = () => {
   } = useApplicationData();
 
   // console.log("favphotos", useApplicationData.favPhotos);
-  console.log("ClickedPhotos", clickedPhoto);
+  // console.log("ClickedPhotos", clickedPhoto);
 
   return (
     <div className="App">
-      <HomeRoute openModal={openModal} toggleFav={toggleFav} favouritedPhotos={favPhotos} />
+      <HomeRoute photos={photos} topics={topics} openModal={openModal} toggleFav={toggleFav} favouritedPhotos={favPhotos} />
       {isModalOpen && (
         <PhotoDetailsModal
           clickedPhoto={clickedPhoto}
