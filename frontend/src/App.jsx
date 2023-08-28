@@ -47,9 +47,7 @@ const App = () => {
   // favouritedPhotos={favPhotos} - favouritedPhotos is variable, {favPhotos} = value
 
   const {
-    clickedPhoto,
-    isModalOpen,
-    favPhotos,
+    state,
     openModal,
     closeModal,
     toggleFav
@@ -60,13 +58,13 @@ const App = () => {
 
   return (
     <div className="App">
-      <HomeRoute photos={photos} topics={topics} openModal={openModal} toggleFav={toggleFav} favouritedPhotos={favPhotos} />
-      {isModalOpen && (
+      <HomeRoute photos={photos} topics={topics} openModal={openModal} toggleFav={toggleFav} favouritedPhotos={state.favPhotos} />
+      {state.isModalOpen && (
         <PhotoDetailsModal
-          clickedPhoto={clickedPhoto}
+          clickedPhoto={state.clickedPhoto}
           closeModal={closeModal}
           toggleFav={toggleFav}
-          favouritedPhotos={favPhotos}
+          favouritedPhotos={state.favPhotos}
         />
       )}
     </div>
