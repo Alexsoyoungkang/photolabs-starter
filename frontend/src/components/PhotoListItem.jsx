@@ -8,7 +8,7 @@ const PhotoListItem = (props) => { // Props allow data to be passed in from a pa
   //console.log("props", props);
   //const selected = props.favouritedPhotos.includes(props.photoId);
   //console.log("selected", selected);
-  console.log("photoId", props.photoId);
+  // console.log("photoId", props.photoId);
   // console.log("Photolistitemprops", props);
   return (
     <div className="photo-list__item">

@@ -11,12 +11,14 @@ const PhotoDetailsModal = (props) => {
   const handleCloseClick = () => {
     closeModal();
   };
-  console.log("clickedPhoto", props);
 
+  console.log("clickedphoto", props);
+
+  /* eslint-disable camelcase */
   const arrayPhoto = Object.keys(props.clickedPhoto.similar_photos).map((key) =>{
-    return props.clickedPhoto.similar_photos[key];
+    return { ...props.clickedPhoto.similar_photos[key], similar_photos: props.clickedPhoto.similar_photos };
+    // return props.clickedPhoto.similar_photos[key];
   }); // returns an array of similar_photos of the clickedPhoto
-  //console.log("arrayPhoto", arrayPhoto);
   return (
     <div className="photo-details-modal" >
       <button className="photo-details-modal__close-button" onClick={ handleCloseClick }>

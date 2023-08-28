@@ -6,7 +6,6 @@ import "../styles/PhotoList.scss";
 
 
 const PhotoList = (props) => { // props = <PhotoList photos = {photos} />
-  //console.log("PhotoListprops", props);
   return (
     <ul className="photo-list">
       {props.photos.map((item) => { // maps over the photos array from mock file received photos={photos} from the parent (homeroute).
