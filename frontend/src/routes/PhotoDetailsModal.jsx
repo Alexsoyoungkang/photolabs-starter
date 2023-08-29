@@ -24,13 +24,15 @@ const PhotoDetailsModal = (props) => {
       <button className="photo-details-modal__close-button" onClick={ handleCloseClick }>
         <img src={closeSymbol} alt="close symbol" />
       </button>
-      <section className="photo-details-modal__images" >
-        <PhotoFavButton
-          toggleFav={props.toggleFav}
-          favouritedPhotos={props.favouritedPhotos}
-          selected={props.favouritedPhotos.includes(props.clickedPhoto.id)}
-          photoId={props.clickedPhoto.id} />
-        <img src={props.clickedPhoto.urls.regular} className="photo-details-modal__image" />
+      <div className="photo-details-container">
+        <section className="photo-details-modal__images" >
+          <PhotoFavButton
+            toggleFav={props.toggleFav}
+            favouritedPhotos={props.favouritedPhotos}
+            selected={props.favouritedPhotos.includes(props.clickedPhoto.id)}
+            photoId={props.clickedPhoto.id} />
+          <img src={props.clickedPhoto.urls.regular} className="photo-details-modal__image" />
+        </section>
         <div className="photo-details-modal__images-container">
           <div className="photo-details-modal__user-details">
             <img className="photo-details-modal__profile" src={props.clickedPhoto.user.profile} />
@@ -40,9 +42,11 @@ const PhotoDetailsModal = (props) => {
             </div>
           </div>
         </div>
-        <header className="photo-details-modal__header">Similar Photos</header>
-        <PhotoList photos={arrayPhoto} toggleFav={props.toggleFav} favouritedPhotos={props.favouritedPhotos} openModal={props.openModal} />
-      </section>
+        <section className='photo-details-similar-photos'>
+          <header className="photo-details-modal__header">Similar Photos</header>
+          <PhotoList photos={arrayPhoto} toggleFav={props.toggleFav} favouritedPhotos={props.favouritedPhotos} openModal={props.openModal} />
+        </section>
+      </div>
     </div>
   );
 }; // <PhotoList photos={arrayPhoto} /> passing the arrayPhoto value with key named photos to PhotoList
