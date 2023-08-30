@@ -10,13 +10,13 @@ Use the `psql -U development` command to login to the PostgreSQL server with the
 
 Create a database with the command `CREATE DATABASE photolabs_development;`.
 
-Copy the `.env.example` file to `.env.development` and fill in the necessary PostgreSQL configuration. The `node-postgres` library uses these environment variables by default.
+Copy the `.env.example` file to `.env.development` and fill in the necessary PostgreSQL configuration listed below(UPDATED). The `node-postgres` library uses these environment variables by default.
 
 ```
 PGHOST=localhost
-PGUSER=labber
+PGUSER=development
 PGDATABASE=photolabs_development
-PGPASSWORD=labber
+PGPASSWORD=development
 PGPORT=5432
 ```
 
