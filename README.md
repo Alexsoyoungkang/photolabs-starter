@@ -14,8 +14,8 @@ Install dependencies with `npm install` in each respective `/frontend` and `/bac
 
 # Important Note
 
-Please run front-end and back-end on your local machine and PSQL on vagrant
-Please read README.md in backend for PostgreSQL configuration(Updated environment variables)
+- Please run front-end and back-end on your local machine and PSQL on vagrant
+- Please read README.md in backend for PostgreSQL configuration(Updated environment variables)
 
 
 ## [Frontend] Running Webpack Development Server

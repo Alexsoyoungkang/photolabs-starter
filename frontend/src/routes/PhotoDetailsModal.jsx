@@ -12,8 +12,6 @@ const PhotoDetailsModal = (props) => {
     closeModal();
   };
 
-  console.log("clickedphoto", props);
-
   /* eslint-disable camelcase */
   const arrayPhoto = Object.keys(props.clickedPhoto.similar_photos).map((key) =>{
     return { ...props.clickedPhoto.similar_photos[key], similar_photos: props.clickedPhoto.similar_photos };

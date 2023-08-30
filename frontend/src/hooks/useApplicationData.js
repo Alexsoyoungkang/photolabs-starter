@@ -45,15 +45,19 @@ const useApplicationData = () => {
     photo: null,
     topic: null
   };
+
+  // Create useReducer
   const [state, dispatch] = useReducer(reducer, defaultState);
+
+  // Fetch topic data
   useEffect(() => {
     fetch('/api/topics')
       .then(res => res.json())
       .then(topicData => dispatch({ type: ACTIONS.SET_TOPIC_DATA, payload: topicData }));
   }, []);
 
+  // Get photos by topic
   useEffect(() => {
-    // Get photos by topic
     if (state.topic) {
       fetch(`/api/topics/photos/${state.topic}`)
         .then(res => res.json())
@@ -67,26 +71,6 @@ const useApplicationData = () => {
     }
   }, [state.topic]);
 
-  // useEffect(() => {
-  //   fetch("/api/photos")
-  //     .then(res => (res.json()))
-  //     .then(photoData => dispatch({ type: ACTIONS.SET_PHOTO_DATA, payload: photoData }));
-  // }, []);
-
-  // HARD CODED USEEFFECT TO TEST
-  // useEffect(() => {
-  //   fetch('/api/topics/photos/4')
-  //     .then(res => res.json())
-  //     .then(photoData => dispatch({ type: ACTIONS.SET_PHOTO_DATA, payload: photoData }));
-  // }, []);
-
-
-
-  // useState before useReducer
-  // const [clickedPhoto, setClickedPhoto] = useState(null);
-  // const [isModalOpen, setIsModalOpen] = useState(false);
-  // const [favPhotos, setFavPhotos] = useState([]);
-
   const openModal = (photo) => {
     dispatch({type: ACTIONS.OPEN_MODAL, photo});
   };
@@ -98,7 +82,6 @@ const useApplicationData = () => {
   const toggleFav = (photoId) => { //takes a parameter photoId.
     dispatch({type: ACTIONS.TOGGLE_FAV, photoId});
   };
-
 
 
   return {

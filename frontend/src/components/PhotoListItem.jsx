@@ -5,11 +5,6 @@ import PhotoFavButton from "./PhotoFavButton";
 
 // defines the structure for displaying a single photo item with its details
 const PhotoListItem = (props) => { // Props allow data to be passed in from a parent component, App, into PhotoListItem.
-  //console.log("props", props);
-  //const selected = props.favouritedPhotos.includes(props.photoId);
-  //console.log("selected", selected);
-  // console.log("photoId", props.photoId);
-  // console.log("Photolistitemprops", props);
   return (
     <div className="photo-list__item">
       <PhotoFavButton
