@@ -1,7 +1,4 @@
-import { useReducer } from "react";
-
-import topics from 'mocks/topics';
-import photos from 'mocks/photos';
+import { useEffect, useReducer } from "react";
 
 const ACTIONS = {
   SET_PHOTO_DATA: 'SET_PHOTO_DATA',
@@ -13,6 +10,10 @@ const ACTIONS = {
 
 const reducer = (state, action) => {
   switch (action.type) {
+  case 'SET_PHOTO_DATA':
+    return { ...state, photos: action.payload };
+  case 'SET_TOPIC_DATA':
+    return { ...state, topics: action.payload };
   case ACTIONS.TOGGLE_FAV:
     return { ...state, favPhotos: state.favPhotos.includes(action.photoId) // checks if the favPhotos array already includes the given photoId. If photoId is already present in the array returns true/ if isn't then false
       ? state.favPhotos.filter((fave) => fave !== action.photoId) // filters out the photoId from the favPhotos array - creates a new array that excludes the photoId.
@@ -21,11 +22,6 @@ const reducer = (state, action) => {
     return { ...state, clickedPhoto: action.photo, isModalOpen: true};
   case ACTIONS.CLOSE_MODAL:
     return { ...state, clickedPhoto: null, isModalOpen: false};
-  case ACTIONS.SET_PHOTO_DATA:
-    return { ...state, photos:action.photos};
-  case ACTIONS.SET_TOPIC_DATA:
-    return { ...state, topics:action.topics};
-  
   default:
     return state;
   }
@@ -36,10 +32,28 @@ const useApplicationData = () => {
     clickedPhoto: null,
     isModalOpen: false,
     favPhotos: [],
-    photos: photos,
-    topics: topics
+    photos: [],
+    topics: []
   };
   const [state, dispatch] = useReducer(reducer, defaultState);
+  useEffect(() => {
+    fetch("/api/photos")
+      .then(res => (res.json()))
+      .then(photoData => dispatch({ type: ACTIONS.SET_PHOTO_DATA, payload: photoData }));
+  }, []);
+
+  // HARD CODED USEEFFECT TO TEST
+  // useEffect(() => {
+  //   fetch('/api/topics/photos/4')
+  //     .then(res => res.json())
+  //     .then(photoData => dispatch({ type: ACTIONS.SET_PHOTO_DATA, payload: photoData }));
+  // }, []);
+
+  useEffect(() => {
+    fetch('/api/topics')
+      .then(res => res.json())
+      .then(topicData => dispatch({ type: ACTIONS.SET_TOPIC_DATA, payload: topicData }));
+  }, []);
 
   // useState before useReducer
   // const [clickedPhoto, setClickedPhoto] = useState(null);
@@ -48,9 +62,6 @@ const useApplicationData = () => {
 
   const openModal = (photo) => {
     dispatch({type: ACTIONS.OPEN_MODAL, photo});
-      
-    //   setClickedPhoto(photo);
-    // setIsModalOpen(true);
   };
 
   const closeModal = () => {
@@ -59,20 +70,12 @@ const useApplicationData = () => {
 
   const toggleFav = (photoId) => { //takes a parameter photoId.
     dispatch({type: ACTIONS.TOGGLE_FAV, photoId});
-    //   setFavPhotos( // depending on whether the photoId was already in the favPhotos array or not, the setFavPhotos function is called to update the favPhotos state with the new array. - either with the removed photoId or with the added photoId
-    //     favPhotos.includes(photoId) // checks if the favPhotos array already includes the given photoId. If photoId is already present in the array returns true/ if isn't then false
-    //       ? favPhotos.filter((fave) => fave !== photoId) // filters out the photoId from the favPhotos array - creates a new array that excludes the photoId.
-    //       : [...favPhotos, photoId] // if photoId: 4, from: [1, 2, 3] => [1, 2, 3, 4]
-    // );  // ^^^ If favPhotos does not include photoId, creates a new array by spreading the elements of favPhotos and adding photoId to the end
-    
   };
 
 
-  // console.log("favphotos", favPhotos);
-  // console.log("ClickedPhotos", clickedPhoto);
-  // openModal={openModal} key = value / before
-  // favouritedPhotos={favPhotos} - favouritedPhotos is variable, {favPhotos} = value
+
   return {
+    ACTIONS,
     state,
     dispatch,
     openModal,
