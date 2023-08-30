@@ -3,9 +3,9 @@ The PhotoLabs project for the Web Development React course programming.
 
 # Final Project
 
-!["Homepage"] (https://raw.githubusercontent.com/Alexsoyoungkang/photolabs-starter/main/docs/photolabs.png)
+!["Homepage"](https://raw.githubusercontent.com/Alexsoyoungkang/photolabs-starter/main/docs/photolabs.png)
 
-!["Open modal Image"] (https://raw.githubusercontent.com/Alexsoyoungkang/photolabs-starter/main/docs/photolabs2.png)
+!["Open modal Image"](https://raw.githubusercontent.com/Alexsoyoungkang/photolabs-starter/main/docs/photolabs2.png)
 
 
 ## Setup
