@@ -15,14 +15,15 @@ const App = () => {
   const {
     ACTIONS,
     state,
+    dispatch,
     openModal,
     closeModal,
-    toggleFav
+    toggleFav,
   } = useApplicationData();
 
   return (
     <div className="App">
-      <HomeRoute photos={state.photos} topics={state.topics} openModal={openModal} toggleFav={toggleFav} favouritedPhotos={state.favPhotos} />
+      <HomeRoute photos={state.photos} topics={state.topics} topic={state.topic} ACTIONS={ACTIONS} dispatch={dispatch} openModal={openModal} toggleFav={toggleFav} favouritedPhotos={state.favPhotos} />
       {state.isModalOpen && (
         <PhotoDetailsModal
           clickedPhoto={state.clickedPhoto}

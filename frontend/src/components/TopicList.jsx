@@ -12,6 +12,10 @@ const TopicList = (props) => { // props = <TopNavigationBar topics = {topics} />
             key={topic.id}
             slug={topic.slug}
             title={topic.title}
+            id={topic.id}
+            topic={props.topic}
+            dispatch={props.dispatch}
+            ACTIONS={props.ACTIONS}
           />
         );
       })}

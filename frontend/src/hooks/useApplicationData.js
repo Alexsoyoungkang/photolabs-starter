@@ -5,7 +5,9 @@ const ACTIONS = {
   SET_TOPIC_DATA: 'SET_TOPIC_DATA',
   TOGGLE_FAV: 'TOGGLE_FAV',
   OPEN_MODAL: 'OPEN_MODAL',
-  CLOSE_MODAL: 'CLOSE_MODAL'
+  CLOSE_MODAL: 'CLOSE_MODAL',
+  SET_NAV_TOPIC: 'SET_NAV_TOPIC',
+  GET_PHOTOS_BY_TOPICS: 'GET_PHOTOS_BY_TOPICS'
 };
 
 const reducer = (state, action) => {
@@ -22,6 +24,12 @@ const reducer = (state, action) => {
     return { ...state, clickedPhoto: action.photo, isModalOpen: true};
   case ACTIONS.CLOSE_MODAL:
     return { ...state, clickedPhoto: null, isModalOpen: false};
+  case 'SET_NAV_TOPIC':
+    state.topic = action.topic;
+    return { ...state };
+  case 'GET_PHOTOS_BY_TOPICS':
+    state.photos = action.payload;
+    return { ...state };
   default:
     return state;
   }
@@ -33,14 +41,37 @@ const useApplicationData = () => {
     isModalOpen: false,
     favPhotos: [],
     photos: [],
-    topics: []
+    topics: [],
+    photo: null,
+    topic: null
   };
   const [state, dispatch] = useReducer(reducer, defaultState);
   useEffect(() => {
-    fetch("/api/photos")
-      .then(res => (res.json()))
-      .then(photoData => dispatch({ type: ACTIONS.SET_PHOTO_DATA, payload: photoData }));
+    fetch('/api/topics')
+      .then(res => res.json())
+      .then(topicData => dispatch({ type: ACTIONS.SET_TOPIC_DATA, payload: topicData }));
   }, []);
+
+  useEffect(() => {
+    // Get photos by topic
+    if (state.topic) {
+      fetch(`/api/topics/photos/${state.topic}`)
+        .then(res => res.json())
+        .then(photoData => dispatch({ type: ACTIONS.GET_PHOTOS_BY_TOPICS, payload: photoData }));
+
+    // Get all photos
+    } else {
+      fetch('/api/photos')
+        .then(res => res.json())
+        .then(photoData => dispatch({ type: ACTIONS.SET_PHOTO_DATA, payload: photoData }));
+    }
+  }, [state.topic]);
+
+  // useEffect(() => {
+  //   fetch("/api/photos")
+  //     .then(res => (res.json()))
+  //     .then(photoData => dispatch({ type: ACTIONS.SET_PHOTO_DATA, payload: photoData }));
+  // }, []);
 
   // HARD CODED USEEFFECT TO TEST
   // useEffect(() => {
@@ -49,11 +80,7 @@ const useApplicationData = () => {
   //     .then(photoData => dispatch({ type: ACTIONS.SET_PHOTO_DATA, payload: photoData }));
   // }, []);
 
-  useEffect(() => {
-    fetch('/api/topics')
-      .then(res => res.json())
-      .then(topicData => dispatch({ type: ACTIONS.SET_TOPIC_DATA, payload: topicData }));
-  }, []);
+
 
   // useState before useReducer
   // const [clickedPhoto, setClickedPhoto] = useState(null);
