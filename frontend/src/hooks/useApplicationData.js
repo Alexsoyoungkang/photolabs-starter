@@ -12,9 +12,9 @@ const ACTIONS = {
 
 const reducer = (state, action) => {
   switch (action.type) {
-  case 'SET_PHOTO_DATA':
+  case ACTIONS.SET_PHOTO_DATA:
     return { ...state, photos: action.payload };
-  case 'SET_TOPIC_DATA':
+  case ACTIONS.SET_TOPIC_DATA:
     return { ...state, topics: action.payload };
   case ACTIONS.TOGGLE_FAV:
     return { ...state, favPhotos: state.favPhotos.includes(action.photoId) // checks if the favPhotos array already includes the given photoId. If photoId is already present in the array returns true/ if isn't then false
@@ -24,10 +24,10 @@ const reducer = (state, action) => {
     return { ...state, clickedPhoto: action.photo, isModalOpen: true};
   case ACTIONS.CLOSE_MODAL:
     return { ...state, clickedPhoto: null, isModalOpen: false};
-  case 'SET_NAV_TOPIC':
+  case ACTIONS.SET_NAV_TOPIC:
     state.topic = action.topic;
     return { ...state };
-  case 'GET_PHOTOS_BY_TOPICS':
+  case ACTIONS.GET_PHOTOS_BY_TOPICS:
     state.photos = action.payload;
     return { ...state };
   default:
@@ -42,7 +42,6 @@ const useApplicationData = () => {
     favPhotos: [],
     photos: [],
     topics: [],
-    photo: null,
     topic: null
   };
 
@@ -83,11 +82,13 @@ const useApplicationData = () => {
     dispatch({type: ACTIONS.TOGGLE_FAV, photoId});
   };
 
+  const setNavTopic = (topicId) => {
+    dispatch({type: ACTIONS.SET_NAV_TOPIC, topic:topicId });
+  };
 
   return {
-    ACTIONS,
     state,
-    dispatch,
+    setNavTopic,
     openModal,
     closeModal,
     toggleFav

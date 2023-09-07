@@ -12,11 +12,8 @@ const PhotoDetailsModal = (props) => {
     closeModal();
   };
 
-  /* eslint-disable camelcase */
-  const arrayPhoto = Object.keys(props.clickedPhoto.similar_photos).map((key) =>{
-    return { ...props.clickedPhoto.similar_photos[key], similar_photos: props.clickedPhoto.similar_photos };
-    // return props.clickedPhoto.similar_photos[key];
-  }); // returns an array of similar_photos of the clickedPhoto
+  const arrayPhoto = Object.values(props.clickedPhoto.similar_photos);
+
   return (
     <div className="photo-details-modal" >
       <button className="photo-details-modal__close-button" onClick={ handleCloseClick }>
@@ -42,11 +39,17 @@ const PhotoDetailsModal = (props) => {
         </div>
         <section className='photo-details-similar-photos'>
           <header className="photo-details-modal__header">Similar Photos</header>
-          <PhotoList photos={arrayPhoto} toggleFav={props.toggleFav} favouritedPhotos={props.favouritedPhotos} openModal={props.openModal} />
+          <PhotoList photos={arrayPhoto}  toggleFav={props.toggleFav} favouritedPhotos={props.favouritedPhotos} openModal={() => {}} />
         </section>
       </div>
     </div>
   );
 }; // <PhotoList photos={arrayPhoto} /> passing the arrayPhoto value with key named photos to PhotoList
+
+/*        { props.clickedPhoto.similar_photos && <section className='photo-details-similar-photos'>
+          <header className="photo-details-modal__header">Similar Photos</header>
+          <PhotoList photos={Object.values(props.clickedPhoto.similar_photos)} toggleFav={props.toggleFav} favouritedPhotos={props.favouritedPhotos} openModal={props.openModal} />
+        </section> }
+ */
 
 export default PhotoDetailsModal;
